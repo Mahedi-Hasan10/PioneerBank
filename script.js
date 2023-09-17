@@ -1,7 +1,4 @@
 // ===========================================deposit part ======================================>>>>>>>>>>>>>>>>>>>>>>>
-    // step-1
-
-
 
 document.getElementById('deposit-btn').addEventListener('click',()=>{
     const depositField = parseFloat(document.getElementById('deposit-field').value);
@@ -13,6 +10,7 @@ document.getElementById('deposit-btn').addEventListener('click',()=>{
     if(depositField >= 500){
         const curAmount = preDepositAmount + depositField;
         depoTotal.innerText = curAmount;
+
         const prevBalance = document.getElementById('balance-total');
         const totalBalance = parseFloat(prevBalance.innerText);
         //total balance after deposit
@@ -41,18 +39,23 @@ document.getElementById('withdraw-btn').addEventListener('click',()=>{
     const prevBalance = document.getElementById('balance-total');
     const totalBalance = parseFloat(prevBalance.innerText);
     console.log(totalBalance);
-    if(totalBalance >= withdrawField && withdrawField >=500 ){
-        // console.log("Hobe");
-        const curWithdrawAmount = newTotalWithdraw + withdrawField;
-        totalWithdraw.innerText = curWithdrawAmount;
-        // total balance after withdraw
-        const newTotalBalance = totalBalance - withdrawField;
-        prevBalance.innerText = newTotalBalance;
-        alert("$"+withdrawField +" withdraw successfull !!");
+    if(totalBalance >= withdrawField ){
+        if(withdrawField >= 500){
+            // console.log("Hobe");
+            const curWithdrawAmount = newTotalWithdraw + withdrawField;
+            totalWithdraw.innerText = curWithdrawAmount;
+            // total balance after withdraw
+            const newTotalBalance = totalBalance - withdrawField;
+            prevBalance.innerText = newTotalBalance;
+            alert("$"+withdrawField +" withdraw successfull !!");
+        }
+        else{
+            alert("You can't withdraw below $500 ")
+        }
 
     }
     else{
-        alert("Insufficient Balance!!")
+        alert("Insufficient Balance!!\nYou don't have enough balance to withdraw!!")
     }
 
 })
